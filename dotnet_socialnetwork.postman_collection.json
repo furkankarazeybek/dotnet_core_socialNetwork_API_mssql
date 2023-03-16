@@ -1,0 +1,286 @@
+{
+	"info": {
+		"_postman_id": "81e0d533-6d6b-4e09-8360-3e84abb102bf",
+		"name": "dotnet_socialnetwork",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17609561"
+	},
+	"item": [
+		{
+			"name": "Register",
+			"protocolProfileBehavior": {
+				"strictSSL": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \r\n  \"Name\": \"Mehmet\",\r\n  \"Email\": \"mehmet@gmail.com\",\r\n  \"Password\":\"12345678\",\r\n  \"PhoneNo\": \"5531195283\"\r\n  \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:56414/api/Registration/Registration",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "56414",
+					"path": [
+						"api",
+						"Registration",
+						"Registration"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Email\" : \"furkan@gmail.com\",\r\n    \"Password\":\"1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:56414/api/Registration/Login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "56414",
+					"path": [
+						"api",
+						"Registration",
+						"Login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UserApprove",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:56414/api/Registration/UserApproval",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "56414",
+					"path": [
+						"api",
+						"Registration",
+						"UserApproval"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add_New",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"Title\":\"Haber başlık6\",\r\n   \"Content\":\"Haber içerik6\",\r\n   \"Email\":\"furkan@gmail.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:56414/api/News/AddNews",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "56414",
+					"path": [
+						"api",
+						"News",
+						"AddNews"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get_News_List",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "Add_Article",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"Title\":\"Haber başlık9\",\r\n   \"Content\":\"Haber içerik9\",\r\n   \"Email\":\"furkan@gmail.com\",\r\n   \"Image\":\"image.png\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:56414/api/Article/AddArticle",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "56414",
+					"path": [
+						"api",
+						"Article",
+						"AddArticle"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Article_Approve",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "Get_Article_List_For_Page",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"Title\":\"\",\r\n   \"Content\":\"\",\r\n   \"Email\":\"\",\r\n   \"Image\":\"\",\r\n   \"Type\":\"Page\"\r\n//Email girildiğinde user sayfasını gösterir, type: \"page\" girildiğinde normal sayfa görünümü gözükür.\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:56414/api/Article/ArticleList",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "56414",
+					"path": [
+						"api",
+						"Article",
+						"ArticleList"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get_Article_List_For_User",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "Staff_Register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \r\n  \"Name\": \"staff1\",\r\n  \"Email\": \"staff@gmail.com\",\r\n  \"Password\":\"12345678\"\r\n\r\n  \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:56414/api/Staff/StaffRegistration",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "56414",
+					"path": [
+						"api",
+						"Staff",
+						"StaffRegistration"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteStaff",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "Add_Events",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "Get_Events_List",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,70 @@
+Stored Procedures
+
+----------------------------------------------------------------//REGISTER-----------------------------------------------------------------------------
+
+CREATE PROC sp_register(@Name VARCHAR(100), @Email VARCHAR(100), @Password VARCHAR(100),@PhoneNo VARCHAR(100), @ErrorMessage VARCHAR(200) OUTPUT)
+AS
+BEGIN 
+   IF NOT EXISTS(SELECT 1 FROM Registration WHERE Email = @Email)
+   BEGIN
+     INSERT INTO Registration(Name,Email,Password,PhoneNo) VALUES(@Name, @Email, @Password,@PhoneNo);
+	 SET @ErrorMessage = 'User created successfully';
+   END
+
+   ELSE
+   BEGIN
+     SET @ErrorMessage = 'User already exist';
+
+   END
+END
+----------------------------------------------------------------//LOGİN-----------------------------------------------------------------------------
+
+
+CREATE PROC sp_login(@Email VARCHAR(100), @Password VARCHAR(100))
+AS
+BEGIN
+   SELECT * FROM Registration WHERE Email=@Email AND Password = @Password; 
+END
+----------------------------------------------------------------//NEWS-----------------------------------------------------------------------------
+
+
+CREATE PROC sp_news(@Title VARCHAR(100), @Content VARCHAR(100), @Email VARCHAR(100))
+AS
+BEGIN
+   INSERT INTO News(Title,Content,Email,IsActive,CreatedOn) VALUES(@Title, @Content, @Email,1,GETDATE());
+END
+----------------------------------------------------------------//ARTICLE-----------------------------------------------------------------------------
+
+
+
+CREATE PROC sp_article(@Title VARCHAR(100), @Content VARCHAR(100), @Email VARCHAR(100),@Image VARCHAR(100),@Type VARCHAR(100))
+AS
+BEGIN
+   INSERT INTO Article(Title,Content,Email,Image, IsActive,IsApproved,Type) VALUES(@Title, @Content, @Email,@Image,1,0,@Type);
+END
+----------------------------------------------------------------//STAFF-----------------------------------------------------------------------------
+
+CREATE PROC sp_staffregister(@Name VARCHAR(100), @Email VARCHAR(100), @Password VARCHAR(100), @ErrorMessage VARCHAR(200) OUTPUT)
+AS
+BEGIN 
+   IF NOT EXISTS(SELECT 1 FROM Staff WHERE Email = @Email)
+   BEGIN
+     INSERT INTO Staff(Name,Email,Password,IsActive) VALUES(@Name, @Email, @Password,1);
+	 SET @ErrorMessage = 'Staff created successfully';
+   END
+
+   ELSE
+   BEGIN
+     SET @ErrorMessage = "Staff already exist';
+
+   END
+END
+----------------------------------------------------------------//EVENTS-----------------------------------------------------------------------------
+
+
+CREATE PROC sp_events(@Title VARCHAR(100), @Content VARCHAR(100), @Email VARCHAR(100))
+AS
+BEGIN
+   INSERT INTO Events(Title,Content,Email,IsActive,CreatedOn) VALUES(@Title, @Content, @Email,1,GETDATE());
+END
+
